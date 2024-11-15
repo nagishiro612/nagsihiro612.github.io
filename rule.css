@@ -1,0 +1,155 @@
+/* 管理規則表單樣式 */
+.rule-form {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.dynamic-list {
+    margin-top: 10px;
+}
+
+.prerequisite-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.prerequisite-item input {
+    flex-grow: 1;
+}
+
+.add-prerequisite,
+.remove-prerequisite {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-prerequisite {
+    background-color: #28a745;
+    color: white;
+}
+
+.remove-prerequisite {
+    background-color: #dc3545;
+    color: white;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+/* 既有規則列表樣式 */
+.existing-rules {
+    margin-top: 30px;
+}
+
+.existing-rule-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rule-info {
+    flex-grow: 1;
+}
+
+.rule-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-rule,
+.delete-rule {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+}
+
+.edit-rule {
+    background-color: #ffc107;
+}
+
+.delete-rule {
+    background-color: #dc3545;
+}
+
+/* 模態框樣式更新 */
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .prerequisite-item {
+        flex-direction: column;
+    }
+
+    .rule-actions {
+        flex-direction: column;
+    }
+}

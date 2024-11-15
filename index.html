@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程擋修查詢系統</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="rule.css">
+    <link rel="icon" href="噴火龍.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <h1>課程擋修查詢系統</h1>
+
+        <div class="section rules-section">
+            <button id="showRulesBtn" class="rules-btn">顯示擋修規則</button>
+            <button id="manageRulesBtn" class="rules-btn">管理擋修規則</button>
+
+            <div id="rulesModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2>課程擋修規則一覽</h2>
+                    <div id="rulesList"></div>
+                </div>
+            </div>
+
+            <div id="manageRulesModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2>管理擋修規則</h2>
+
+                    <div class="rule-form">
+                        <h3>新增/修改規則</h3>
+                        
+                        <div class="form-group">
+                            <label for="courseName">課程名稱：</label>
+                            <input type="text" id="courseName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ruleType">規則類型：</label>
+                            <select id="ruleType" required>
+                                <option value="mustTaken">必須曾修</option>
+                                <option value="cannotTakeBefore">不得先修</option>
+                                <option value="multipleConditions">多重條件</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group prerequisites-container">
+                            <label>先修課程：</label>
+                            <div id="prerequisitesList" class="dynamic-list">
+                                <div class="prerequisite-item">
+                                    <input type="text" class="prerequisite-input">
+                                    <button type="button" class="add-prerequisite">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group multiple-conditions" style="display: none;">
+                            <div class="mustTaken-container">
+                                <label>必須曾修課程：</label>
+                                <div id="mustTakenList" class="dynamic-list">
+                                    <div class="prerequisite-item">
+                                        <input type="text" class="prerequisite-input">
+                                        <button type="button" class="add-prerequisite">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cannotTakeBefore-container">
+                                <label>不得先修課程：</label>
+                                <div id="cannotTakeBeforeList" class="dynamic-list">
+                                    <div class="prerequisite-item">
+                                        <input type="text" class="prerequisite-input">
+                                        <button type="button" class="add-prerequisite">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" id="saveRule" class="save-btn">儲存規則</button>
+                    </div>
+
+                    <div class="existing-rules">
+                        <h3>現有規則列表</h3>
+                        <div id="existingRulesList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section upload-section">
+            <h2>上傳修課清單</h2>
+            <div class="file-input-container">
+                <input type="file" id="currentCourseFile" class="file-input" accept=".xlsx, .xls">
+                <label for="currentCourseFile" class="file-input-label">選擇檔案</label>
+                <span id="currentFileName" class="file-name"></span>
+            </div>
+            <div id="currentCourseNotification" class="notification"></div>
+        </div>
+
+        <div class="section upload-section">
+            <h2>上傳歷年修課清單</h2>
+            <div class="file-input-container">
+                <input type="file" id="historicalCourseFile" class="file-input" accept=".xlsx, .xls" multiple>
+                <label for="historicalCourseFile" class="file-input-label">選擇檔案 (可多選)</label>
+            </div>
+            <div id="historicalFileList" class="file-list"></div>
+            <div id="historicalCourseNotification" class="notification"></div>
+        </div>
+
+        <div class="check-section">
+            <button id="checkButton" class="check-btn">檢查擋修狀況</button>
+        </div>
+
+        <div id="resultSection" class="section result-section">
+            <div id="resultNotification" class="notification"></div>
+            <div id="resultTable" class="result-table"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
